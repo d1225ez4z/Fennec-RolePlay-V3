@@ -1,0 +1,306 @@
+/* ========================== fonts ============================== */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@200..1000&family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* ========================== body ============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  background-color: #002f35;
+}
+
+#snowflakes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.snowflake {
+  position: absolute;
+  top: -2vh;
+  background-color: #ffffff;
+  box-shadow: 0 0 1vh #ffffff;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* ========================== navbar ============================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  width: 70%;
+  margin: 3vh auto;
+  backdrop-filter: blur(5px);
+  border-radius: 8vh;
+  animation: slideIn 1s ease-out forwards;
+}
+
+.logo-navbar {
+  display: flex;
+  align-items: center;
+}
+
+.logo-navbar img {
+  width: 140px;
+  height: auto;
+}
+
+.nav-links a {
+  color: #ffffffc5;
+  text-decoration: none;
+  transition: 0.4s;
+  font-size: 1rem;
+  font-family: "Oswald", sans-serif;
+  border-bottom: 3px solid #00b7cf00;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 3px;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.nav-links a.active {
+  color: #00b7cf;
+  text-shadow: 0 0 1.5vh #00b7cf5e;
+}
+
+.nav_total_p {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.nav_total_p span {
+  font-size: 1rem;
+  font-family: "Oswald", sans-serif;
+  color: #ffffffe4;
+}
+.nav_total_p i {
+  color: #e8943b;
+  text-shadow: 0 0 2vh #00b7cf5e;
+  font-size: 1rem;
+  margin: auto 5px;
+}
+
+.nav_total_p p {
+  color: #e8943b;
+  text-shadow: 0 0 2vh #00b7cf5e;
+  font-size: 1rem;
+  font-family: "Oswald", sans-serif;
+}
+
+.play-nav {
+  background-color: #e8943b1c;
+  color: #e8943b;
+  text-shadow: 0 0 2vh #e8943b;
+  font-family: "Oswald", sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  transition: 0.4s;
+  text-decoration: none;
+}
+.play-nav:hover {
+  background-color: #e8943b2b;
+}
+
+.server-nav-btn {
+  position: relative;
+  display: inline-block;
+}
+
+.server-nav-btn-content {
+  display: none; 
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: radial-gradient(100.34% 104.36% at 29.44% -13.62%, #262e3bca 0%, #1b5785ca 0.50%, #003a67ca 100%);
+  min-width: 140px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
+  padding: 5px 0;
+  backdrop-filter: blur(10px);
+}
+
+.server-nav-btn-content a {
+  color: #ffffffa6;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.server-nav-btn:hover .server-nav-btn-content {
+  display: block;
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #ffffffa6;
+  transition: 0.4s;
+}
+
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.card-main {
+  width: 300px;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: background-image 0.3s ease-in-out;
+}
+
+.card1 {
+  width: 500px;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: background-image 0.3s ease-in-out;
+  background-image: url('../img/wlip.png');
+}
+
+.card1:hover {
+  background-image: url('../img/wliph.png');
+}
+
+.card2 {
+  width: 500px;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: background-image 0.3s ease-in-out;
+  background-image: url('../img/rules.png');
+}
+
+.card2:hover {
+  background-image: url('../img/rulesh.png');
+}
+
+body {
+  background-image: url('../img/BG.png');
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out;
+}
+
+
+@media (max-width: 1200px) {
+  .epcontent {
+    display: none;
+  }
+
+  .epmessage {
+    display: block;
+    font-size: 1.8rem;
+    font-family: "Cairo", sans-serif;
+    color: #ffffffe4;
+    width: 80%;
+    text-align: center;
+    background-color: #8b8b8b13;
+    border: 1px solid #7a7a7a42;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .epmessage h3{
+    color: #e8943b;
+    font-family: "Oswald", sans-serif;
+  }
+}
+
+.epmessage {
+  display: none;
+}
+
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(80.56% 128.89% at 50% 0, #195d94b6 0, #0d0b1bf6 100%), url('') no-repeat center center; 
+  background-size: cover;
+  /* filter: blur(5px); */
+  color: #e8943b;
+  font-family: "Oswald", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.loading-spinner {
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top: 5px solid #e8943b;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+

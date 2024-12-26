@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="cars.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles Dashboard</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="ip.html">Whitelist IP</a>
+            <a href="rules.html">Server Rules</a>
+            <a href="cars.html">CARS</a>
+        </nav>
+    </header>
+
+    <button class="back-button" id="backButton" onclick="goBack()">
+        <img src="https://cdn.discordapp.com/attachments/1286003060501647391/1321624139999744020/arrow.png?ex=676de9e5&is=676c9865&hm=8657af4d55213374e3bf0836c8c1b99c48af6e0daf93d0286ea48a99f10c90df&" alt="Back">
+    </button>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" onclick="toggleDarkMode()">
+        🌙
+    </button>
+
+    <main>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search...">
+        </div>
+        <div class="categories" id="categoriesContainer">
+            <!-- Categories will be displayed here dynamically -->
+        </div>
+
+        <div class="vehicles" id="vehiclesContainer" style="display: none;">
+            <!-- Vehicles will be displayed here dynamically -->
+        </div>
+    </main>
+
+    <script>
+        const categoriesData = [
+            { name: 'Cars', img: '', key: 'cars' },
+            { name: 'Motorcycles', img: '', key: 'moto' },
+            { name: 'Planes', img: '', key: 'planes' },
+            { name: 'Helicopters', img: '', key: 'helicopters' },
+            { name: 'Boats', img: '', key: 'boats' }
+        ];
+
+        const vehiclesData = {
+            cars: [
+                { name: 'Car 1', img: '' },
+                { name: 'Car 2', img: '' },
+                { name: 'Car 3', img: '' }
+            ],
+            moto: [
+                { name: 'Motorcycle 1', img: '' },
+                { name: 'Motorcycle 2', img: '' }
+            ],
+            planes: [
+                { name: 'Plane 1', img: '' }
+            ],
+            helicopters: [
+                { name: 'Helicopter 1', img: '' }
+            ],
+            boats: [
+                { name: 'Boat 1', img: '' }
+            ]
+        };
+
+        const categoriesContainer = document.getElementById('categoriesContainer');
+        const vehiclesContainer = document.getElementById('vehiclesContainer');
+        const searchInput = document.getElementById('searchInput');
+        const backButton = document.getElementById('backButton');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+
+        function displayCategories() {
+            categoriesContainer.style.display = 'grid';
+            vehiclesContainer.style.display = 'none';
+            backButton.style.display = 'none';
+            categoriesContainer.innerHTML = '';
+            categoriesData.forEach(category => {
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.dataset.category = category.key;
+                card.innerHTML = `
+                    <img src="${category.img}" alt="${category.name}">
+                    <h3>${category.name}</h3>
+                `;
+                card.addEventListener('click', () => {
+                    displayVehicles(category.key);
+                });
+                categoriesContainer.appendChild(card);
+            });
+        }
+
+        function displayVehicles(category) {
+            categoriesContainer.style.display = 'none';
+            vehiclesContainer.style.display = 'grid';
+            backButton.style.display = 'flex';
+            vehiclesContainer.innerHTML = '';
+            vehiclesData[category].forEach(vehicle => {
+                const card = document.createElement('div');
+                card.className = 'vehicle-card';
+                card.innerHTML = `
+                    <img src="${vehicle.img}" alt="${vehicle.name}">
+                    <h3>${vehicle.name}</h3>
+                `;
+                vehiclesContainer.appendChild(card);
+            });
+        }
+
+        function goBack() {
+            displayCategories();
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            const allCards = [...categoriesContainer.children];
+            allCards.forEach(card => {
+                const name = card.querySelector('h3').textContent.toLowerCase();
+                card.style.display = name.includes(query) ? 'block' : 'none';
+            });
+        });
+
+        displayCategories();
+    </script>
+</body>
+</html>
